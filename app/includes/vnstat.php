@@ -78,7 +78,7 @@ class vnStat {
 		$vnstatInterfaces = [];
 
 		foreach($this->vnstatData['interfaces'] as $interface) {
-			array_push($vnstatInterfaces, $interface['id']);
+			array_push($vnstatInterfaces, $interface);
 		}
 
 		return $vnstatInterfaces;
@@ -90,9 +90,10 @@ class vnStat {
 		if ($this->vnstatJsonVersion == 1) {
 			$typeAppend = 's';
 		}
-
+        
 		// Blank placeholder
 		$trafficData = [];
+        $i=0;
 
 		// Get the array index for the chosen interface
 		$arrayIndex = array_search($interface, array_column($this->vnstatData['interfaces'], 'id'));
